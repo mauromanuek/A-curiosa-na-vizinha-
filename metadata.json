@@ -1,0 +1,6 @@
+{
+  "name": "A Curiosa na Cozinha",
+  "description": "Website oficial e vitrine de encomendas da marca culinária A Curiosa na Cozinha, por Indira Rocha Zinga. Gastronomia angolana, pratos típicos, buffet e eventos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
