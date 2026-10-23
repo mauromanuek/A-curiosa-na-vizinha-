@@ -147,10 +147,13 @@ Basta colar os seus vídeos no formato `.mp4` dentro da pasta `public/assets/vid
 4. Preencha as configurações de build:
    - **Name:** `a-curiosa-na-cozinha`
    - **Branch:** `main`
-   - **Build Command:** `npm run build`
+   - **Build Command:** `npm install && npm run build`
    - **Publish Directory:** `dist`
-5. Clique em **"Create Static Site"**.
-6. Em menos de 2 minutos seu website estará no ar com HTTPS gratuito!
+5. Na aba **Environment** (Variáveis de Ambiente), adicione:
+   - **Key:** `NODE_VERSION`
+   - **Value:** `22.14.0`
+6. Clique em **"Create Static Site"**.
+7. Em menos de 2 minutos seu website estará no ar com HTTPS gratuito!
 
 ### Passo 3: Adicionar Domínio Personalizado (Opcional)
 No painel do Render, vá em **Settings** > **Custom Domains** e adicione seu domínio (por exemplo `acuriosanacozinha.com`). Siga as instruções de DNS fornecidas pelo Render no seu registrador de domínio.
