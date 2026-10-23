@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { ChefHat, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 
 interface HeroProps {
   onOpenOrder: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = () => {
-  // 3 fotos verdadeiramente diferentes da Indira na lateral do Hero
+  // 3 fotos verdadeiramente diferentes da Indira em formato Widescreen 16:9
   const lateralSlides = [
     {
       image: '/assets/images/hero-1.jpg',
-      alt: 'Indira Rocha Zinga apresentando o prato tradicional de funge e calulu',
+      alt: 'Indira Rocha Zinga apresentando travessa de peixe e funge',
       caption: 'Indira Rocha Zinga',
       tag: 'Chef & Criadora de Conteúdo'
     },
     {
       image: '/assets/images/hero-2.jpg',
-      alt: 'Indira temperando a calulu e iguarias na panela de barro',
+      alt: 'Indira temperando calulu na panela de barro tradicional',
       caption: 'Tempero & Tradição',
       tag: 'Cozinha Artesanal Angolana'
     },
@@ -107,53 +107,51 @@ export const Hero: React.FC<HeroProps> = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
-          {/* FOTO NA LATERAL: 3 FOTOS DIFERENTES COM TRANSIÇÃO CLARA E PROGRESSIVA */}
+          {/* FOTO NA LATERAL: FORMATO WIDESCREEN 16:9 TOTALMENTE VISÍVEL E SEM CORTAR */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, x: -20 }}
+            initial={{ opacity: 0, scale: 0.96, x: -20 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-5 lg:col-span-5 flex justify-center"
+            className="lg:col-span-6 flex flex-col justify-center"
           >
-            <div className="relative w-full max-w-sm sm:max-w-md group">
+            <div className="relative w-full group">
               
-              {/* Brilho decorativo ao redor da foto */}
-              <div className="absolute -inset-2 bg-gradient-to-tr from-[#D81B60]/35 to-amber-500/25 rounded-3xl blur-lg transition-opacity" />
+              {/* Brilho suave */}
+              <div className="absolute -inset-2 bg-gradient-to-tr from-[#D81B60]/30 to-amber-500/20 rounded-3xl blur-lg transition-opacity" />
               
-              {/* Moldura da Foto */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 bg-neutral-900 aspect-3/4">
+              {/* Moldura 16:9 Limpa e Totalmente Visível */}
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 bg-neutral-900 aspect-16/9 w-full">
                 
-                {/* Imagens com Crossfade */}
+                {/* Imagens 16:9 com Transição Suave */}
                 {lateralSlides.map((slide, index) => (
                   <div
                     key={index}
-                    className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
                       index === currentSlide
-                        ? 'opacity-100 scale-100 z-10'
-                        : 'opacity-0 scale-105 pointer-events-none z-0'
+                        ? 'opacity-100 z-10'
+                        : 'opacity-0 pointer-events-none z-0'
                     }`}
                   >
                     <img
                       src={slide.image}
                       alt={slide.alt}
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-full object-cover object-center"
                     />
                   </div>
                 ))}
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none z-20" />
-
-                {/* Badge indicador de número da foto: 1/3, 2/3, 3/3 */}
-                <div className="absolute top-4 right-4 z-30 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 text-[11px] font-bold text-pink-200">
-                  Foto {currentSlide + 1} de {lateralSlides.length}
+                {/* Badge indicador discreto: Foto 1 de 3 */}
+                <div className="absolute top-3 right-3 z-20 bg-black/55 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20 text-[10px] font-bold text-pink-200">
+                  {currentSlide + 1} / {lateralSlides.length}
                 </div>
 
                 {/* Botões de seta para navegação manual ao passar o mouse */}
                 <button
                   type="button"
                   onClick={prevSlide}
-                  className="absolute left-2.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm cursor-pointer"
+                  className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm cursor-pointer shadow-md"
                   aria-label="Foto anterior"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -161,48 +159,47 @@ export const Hero: React.FC<HeroProps> = () => {
                 <button
                   type="button"
                   onClick={nextSlide}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm cursor-pointer"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm cursor-pointer shadow-md"
                   aria-label="Próxima foto"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
+              </div>
 
-                {/* Legenda na base da foto com troca dinâmica */}
-                <div className="absolute bottom-4 left-4 right-4 text-white z-30 flex items-end justify-between">
-                  <div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#FF80AB] block mb-0.5">
-                      {lateralSlides[currentSlide].tag}
-                    </span>
-                    <p className="text-sm font-bold text-white tracking-wide">
-                      {lateralSlides[currentSlide].caption}
-                    </p>
-                  </div>
-
-                  {/* Barrinhas de progresso das 3 fotos */}
-                  <div className="flex items-center gap-1.5 pb-1">
-                    {lateralSlides.map((_, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        onClick={() => setCurrentSlide(i)}
-                        aria-label={`Ver foto ${i + 1}`}
-                        className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                          i === currentSlide
-                            ? 'w-6 bg-[#FF4081]'
-                            : 'w-2 bg-white/40 hover:bg-white/70'
-                        }`}
-                      />
-                    ))}
-                  </div>
+              {/* Informações da Foto Posicionadas ABAIXO da Imagem para NUNCA Cobrir a Foto */}
+              <div className="mt-3 px-1 flex items-center justify-between text-xs">
+                <div>
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-[#FF80AB] block">
+                    {lateralSlides[currentSlide].tag}
+                  </span>
+                  <p className="font-semibold text-neutral-200">
+                    {lateralSlides[currentSlide].caption}
+                  </p>
                 </div>
 
+                {/* Barrinhas de progresso interativas */}
+                <div className="flex items-center gap-1.5">
+                  {lateralSlides.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => setCurrentSlide(i)}
+                      aria-label={`Ver foto ${i + 1}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                        i === currentSlide
+                          ? 'w-6 bg-[#FF4081]'
+                          : 'w-2 bg-white/30 hover:bg-white/60'
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
 
             </div>
           </motion.div>
 
           {/* TEXTO DO HERO: RESUMIDO, ELEGANTE E COM ANIMAÇÃO TYPEWRITER */}
-          <div className="md:col-span-7 lg:col-span-7 space-y-4 text-left">
+          <div className="lg:col-span-6 space-y-4 text-left">
             
             {/* Tag da chef com entrada suave */}
             <motion.div
@@ -245,7 +242,7 @@ export const Hero: React.FC<HeroProps> = () => {
             </motion.div>
 
             {/* PALAVRAS SENDO ESCRITAS POUCO A POUCO (SEM O SINAL « ») */}
-            <div className="min-h-[64px] sm:min-h-[72px] flex items-center">
+            <div className="min-h-[58px] sm:min-h-[68px] flex items-center">
               <p className="text-lg sm:text-2xl lg:text-3xl font-medium text-pink-100 font-display italic leading-snug">
                 {currentText}
                 <span className="inline-block w-0.5 h-6 sm:h-7 bg-[#FF4081] ml-1 align-middle animate-pulse" />

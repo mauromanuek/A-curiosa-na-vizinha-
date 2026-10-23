@@ -93,10 +93,10 @@ Basta arrastar ou colar suas fotos para a pasta `public/assets/images/` substitu
 
 | Nome do Arquivo | Onde aparece no site | Resolução Recomendada |
 | :--- | :--- | :--- |
-| **`prato-fundo.jpg`** | Imagem de fundo do topo e rodapé (sem letras) | 1920 × 1080 px |
-| **`indira-portrait.jpg`** | Foto principal da Indira na lateral do Hero | 800 × 1000 px |
-| **`hero-1.jpg`** | 2ª foto do slideshow lateral da Indira | 800 × 1000 px |
-| **`hero-2.jpg`** | 3ª foto do slideshow lateral da Indira | 800 × 1000 px |
+| **`prato-fundo.jpg`** | Imagem de fundo do topo e rodapé (sem letras) | 1920 × 1080 px (16:9) |
+| **`hero-1.jpg`** | 1ª foto da Indira na lateral do Hero | 1920 × 1080 px (16:9) |
+| **`hero-2.jpg`** | 2ª foto da Indira na lateral do Hero | 1920 × 1080 px (16:9) |
+| **`hero-3.jpg`** | 3ª foto da Indira na lateral do Hero | 1920 × 1080 px (16:9) |
 | **`prato-1.jpg`** | Foto do 1º prato: Mufete de peixe | 800 × 600 px |
 | **`prato-2.jpg`** | Foto do 2º prato: Calulu de peixe | 800 × 600 px |
 | **`prato-3.jpg`** | Foto do 3º prato: Frango à moda da casa | 800 × 600 px |
